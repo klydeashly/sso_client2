@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>    
+
+      const origin = "http://localhost:5173"
+      window.addEventListener("message", function (e) {
+        console.log(e);
+
+          if (e.origin !== origin) {
+              return
+          }
+          const data = JSON.parse(e.data);
+          console.log(data)
+          if (data !== null) {
+              localStorage.setItem("confirmationToken", data);
+          }
+      })
+</script>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
